@@ -1,0 +1,15 @@
+/* Resetting styles for the navigation list */
+.studentLayout ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+  }
+  
+  .studentLayout li a {
+    text-decoration: none;
+    color: red; /* Change to a color that is contrasting to your background */
+}
+
+  
+  /* Add more styles or customize as needed */
+  
