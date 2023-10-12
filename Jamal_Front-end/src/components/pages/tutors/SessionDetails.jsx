@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function SessionDetails() {
   const [attendance, setAttendance] = useState(0);
-  const [questionsCount, setQuestionsCount] = useState({});
-  
+
   const handleAttendanceChange = (e) => {
     setAttendance(e.target.value);
   };
 
-  const handleQuestionsChange = (subject, count) => {
-    setQuestionsCount(prevState => ({
-      ...prevState,
-      [subject]: count
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the submission here, e.g., send the data to your API
+    try {
+      const config = { headers: { 'Content-Type': 'application/json' }};
+      const body = JSON.stringify({ tutorId: '6527a22014d0e9668495f8e7', attendance });
+      await axios.post('http://localhost:5000/api/sessions', body, config);
+      alert('Session saved successfully!');
+    } catch (err) {
+      console.error(err.response.data);
+      alert('Error saving session!');
+    }
   };
 
   return (
@@ -26,20 +27,6 @@ function SessionDetails() {
         Attendance:
         <input type="number" value={attendance} onChange={handleAttendanceChange} />
       </label>
-      
-      {/* You would dynamically generate these based on the available subjects */}
-      <label>
-        Math Questions:
-        <input type="number" value={questionsCount.math || 0} onChange={(e) => handleQuestionsChange('math', e.target.value)} />
-      </label>
-      
-      <label>
-        Science Questions:
-        <input type="number" value={questionsCount.science || 0} onChange={(e) => handleQuestionsChange('science', e.target.value)} />
-      </label>
-      
-      {/* ... other subjects ... */}
-      
       <button type="submit">Submit</button>
     </form>
   );

@@ -1,0 +1,11 @@
+/* Resetting styles for the navigation list */
+.tutorLayout ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+  }
+  
+  .tutorLayout li a {
+    text-decoration: none;
+    color: red; /* Change to a color that is contrasting to your background */
+}

@@ -7,6 +7,8 @@ import StudentRegistration from './components/StudentRegistration';
 import TutorRegistration from './components/TutorRegistration';
 import AdminDashboard from './components/pages/AdminDashboard/AdminDashboard';
 import StudentLayout from './components/pages/students/StudentLayout';
+import SessionDetails from './components/pages/tutors/SessionDetails';
+import TutorSideNav from './components/pages/tutors/TutorSideNav';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/admin-dashboard" component={AdminDashboard}/>
           {/* Routes for student pages */}
           <Route path="/students" component={StudentLayout} />
+          <Route path="/session-details" component={SessionDetails} />
+          <Route path="/tutors/sidenav" component={TutorSideNav} />
           {/* Uncomment below if you have tutor related components ready */}
           {/* <Route path="/tutors" component={TutorLayout} /> */}
         </Switch>
