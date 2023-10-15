@@ -248,7 +248,7 @@ function TutorRegistration() {
         <label>Expertise:</label>
         <label><input type="checkbox" name="tutorExpertise" value="Maths" onChange={handleChange} /> Maths</label>
         <label><input type="checkbox" name="tutorExpertise" value="Science" onChange={handleChange} /> Science</label>
-        <label><input type="checkbox" name="tutorExpertise" value="IT" onChange={handleChange} /> IT</label>
+        <label><input type="checkbox" name="tutorExpertise" value="Media" onChange={handleChange} /> Media</label>
         <label><input type="checkbox" name="tutorExpertise" value="Literature" onChange={handleChange} /> Literature</label>
         <label><input type="checkbox" name="tutorExpertise" value="Programming" onChange={handleChange} /> Programming</label>
         <br />

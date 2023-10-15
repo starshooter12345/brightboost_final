@@ -9,6 +9,7 @@ import AdminDashboard from './components/pages/AdminDashboard/AdminDashboard';
 import StudentLayout from './components/pages/students/StudentLayout';
 import SessionDetails from './components/pages/tutors/SessionDetails';
 import TutorSideNav from './components/pages/tutors/TutorSideNav';
+import ViewQuestions from './components/pages/tutors/ViewQuestions';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/students" component={StudentLayout} />
           <Route path="/session-details" component={SessionDetails} />
           <Route path="/tutors/sidenav" component={TutorSideNav} />
+          <Route path="/tutors/view-questions" component={ViewQuestions} />
           {/* Uncomment below if you have tutor related components ready */}
           {/* <Route path="/tutors" component={TutorLayout} /> */}
         </Switch>

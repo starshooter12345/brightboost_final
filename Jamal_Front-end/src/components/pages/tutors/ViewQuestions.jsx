@@ -1,49 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ViewQuestions() {
+  const [expertise, setExpertise] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [details, setDetails] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Fetch the questions when the component mounts
+  const fetchQuestions = async () => {
+    if (!expertise) return; // Do not fetch if no expertise is selected
+
+    try {
+      setLoading(true);
+      const res = await axios.get(`http://localhost:5000/api/questions?subject=${expertise}`);
+      setQuestions(res.data);
+    } catch (error) {
+      console.error('Error fetching the questions:', error);
+      alert('Error fetching the questions');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // Replace this with the actual API call
-    const fetchQuestions = async () => {
-      const response = await fetch('api/questions');
-      const data = await response.json();
-      setQuestions(data);
-    };
     fetchQuestions();
-  }, []);
-
-  const handleSelectQuestion = (question) => {
-    setSelectedQuestion(question);
-    setDetails('');
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle the submission here, e.g., send the details to your API
-  };
+  }, [expertise]); // Re-fetch questions when expertise changes
 
   return (
     <div>
-      <ul>
-        {questions.map((question) => (
-          <li key={question.id} onClick={() => handleSelectQuestion(question)}>
-            {question.subject}: {question.text}
-          </li>
-        ))}
-      </ul>
-      
-      {selectedQuestion && (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Question Details:
-            <textarea value={details} onChange={(e) => setDetails(e.target.value)} />
-          </label>
-          <button type="submit">Log Details</button>
-        </form>
+      <h2>View Questions</h2>
+      <label>
+        Your Expertise:
+        <select value={expertise} onChange={(e) => setExpertise(e.target.value)} required>
+          <option value="" disabled>Select expertise</option>
+          <option value="Maths">Maths</option>
+          <option value="Science">Science</option>
+          <option value="Literature">Literature</option>
+          <option value="Programming">Programming</option>
+          <option value="Media">Media</option>
+        </select>
+      </label>
+      <br />
+      {loading ? (
+        <p>Loading questions...</p>
+      ) : (
+        <ul>
+          {questions.map((q) => (
+            <li key={q._id}>{q.question}</li>
+          ))}
+        </ul>
       )}
     </div>
   );

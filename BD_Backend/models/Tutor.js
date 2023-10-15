@@ -70,7 +70,7 @@ const TutorSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    tutorExpertise: { type: [String], required: true, enum: ['Maths', 'Science', 'IT', 'Literature', 'Programming'] },
+    tutorExpertise: { type: [String], required: true, enum: ['Maths', 'Science', 'Media', 'Literature', 'Programming'] },
     tutorAvailability: {
         type: {
             monday: Boolean,
