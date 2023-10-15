@@ -10,6 +10,10 @@ const QuestionSchema = new mongoose.Schema({
     question: {
         type: String,
         required: true
+    },
+    selsession: {
+        type: String,
+        required: true
     }
 });
 

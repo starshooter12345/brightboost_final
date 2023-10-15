@@ -10,6 +10,7 @@ import StudentLayout from './components/pages/students/StudentLayout';
 import SessionDetails from './components/pages/tutors/SessionDetails';
 import TutorSideNav from './components/pages/tutors/TutorSideNav';
 import ViewQuestions from './components/pages/tutors/ViewQuestions';
+import AskQuestion from './components/pages/students/AskQuestion';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/session-details" component={SessionDetails} />
           <Route path="/tutors/sidenav" component={TutorSideNav} />
           <Route path="/tutors/view-questions" component={ViewQuestions} />
+          <Route path="/students/ask-question" component={AskQuestion} />
           {/* Uncomment below if you have tutor related components ready */}
           {/* <Route path="/tutors" component={TutorLayout} /> */}
         </Switch>

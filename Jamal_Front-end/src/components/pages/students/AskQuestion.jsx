@@ -6,6 +6,7 @@ import axios from 'axios';
 function AskQuestion() {
   const [subject, setSubject] = useState('');
   const [question, setQuestion] = useState('');
+  const [selsession, setSelectSession] = useState(''); 
 
   const submitQuestion = async (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ function AskQuestion() {
       alert('Question submitted successfully');
       setSubject('');
       setQuestion('');
+      setSelectSession(''); 
     } catch (error) {
       console.error('Error submitting the question:', error);
       alert('Error submitting the question');
@@ -27,7 +29,7 @@ function AskQuestion() {
         <label>
           Subject:
           <select value={subject} onChange={(e) => setSubject(e.target.value)} required>
-            <option value="" disabled>Select subject</option>
+            <option value="" disabled>Select Subject</option>
             <option value="Maths">Maths</option>
             <option value="Science">Science</option>
             <option value="Literature">Literature</option>
@@ -41,6 +43,17 @@ function AskQuestion() {
           <textarea value={question} onChange={(e) => setQuestion(e.target.value)} required />
         </label>
         <br />
+        <label>
+          Select Session:
+          <select value={selsession} onChange={(e) => setSelectSession(e.target.value)} required>
+            <option value="" disabled>Select Session</option>
+            <option value="Monday 3:30-5:30pm">Monday 3:30-5:30pm</option>
+            <option value="Tuesday 3:30-5:30pm">Tuesday 3:30-5:30pm</option>
+            <option value="Wednesday 3:30-5:30pm">Wednesday 3:30-5:30pm</option>
+            <option value="Thursday 3:30-5:30pm">Thursday 3:30-5:30pm</option>
+            <option value="Friday 3:30-5:30pm">Friday 3:30-5:30pm</option>
+          </select>
+        </label>
         <button type="submit">Submit</button>
       </form>
     </div>

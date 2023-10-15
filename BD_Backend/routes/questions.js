@@ -8,12 +8,13 @@ const Question = require('../models/Question');
 // @desc Submit a question
 // @access Public
 router.post('/', async (req, res) => {
-    const { subject, question } = req.body;
+    const { subject, question, selsession } = req.body;
 
     try {
         const newQuestion = new Question({
             subject,
-            question
+            question,
+            selsession
         });
 
         await newQuestion.save();
