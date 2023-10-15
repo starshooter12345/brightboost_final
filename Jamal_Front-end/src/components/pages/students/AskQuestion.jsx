@@ -6,16 +6,16 @@ import axios from 'axios';
 function AskQuestion() {
   const [subject, setSubject] = useState('');
   const [question, setQuestion] = useState('');
-  const [selsession, setSelectSession] = useState(''); 
+  const [session, setSession] = useState(''); 
 
   const submitQuestion = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/questions', { subject, question });
+      await axios.post('http://localhost:5000/api/questions', { subject, question, session });
       alert('Question submitted successfully');
       setSubject('');
       setQuestion('');
-      setSelectSession(''); 
+      setSession(''); 
     } catch (error) {
       console.error('Error submitting the question:', error);
       alert('Error submitting the question');
@@ -45,7 +45,7 @@ function AskQuestion() {
         <br />
         <label>
           Select Session:
-          <select value={selsession} onChange={(e) => setSelectSession(e.target.value)} required>
+          <select value={session} onChange={(e) => setSession(e.target.value)} required>
             <option value="" disabled>Select Session</option>
             <option value="Monday 3:30-5:30pm">Monday 3:30-5:30pm</option>
             <option value="Tuesday 3:30-5:30pm">Tuesday 3:30-5:30pm</option>
