@@ -28,6 +28,19 @@ function SessionDetails() {
         }
     };
 
+    const markAsAnswered = async (questionId) => {
+        try {
+            const response = await axios.put('http://localhost:5000/api/questions/${questionId}/answer');
+            const updatedQuestions = questions.map(q => 
+                q._id === questionId ? response.data : q
+            );
+            setQuestions(updatedQuestions);
+        } catch (err) {
+            console.error('Error marking the question as answered:', err);
+            setError('Error marking the question as answered');
+        }
+    };
+
     return (
         <div>
             <h2>Session Details</h2>
@@ -43,7 +56,7 @@ function SessionDetails() {
                     <option value="Media">Media</option>
                 </select>
             </label>
-          <br/>
+            <br/>
             <label>
                 Select Session:
                 <select value={session} onChange={(e) => setSession(e.target.value)} required>
@@ -63,7 +76,12 @@ function SessionDetails() {
                     <h3>Questions:</h3>
                     <ul>
                         {questions.map(q => (
-                            <li key={q._id}>{q.question}</li>
+                            <li key={q._id}>
+                                {q.question}
+                                {!q.isAnswered && (
+                                    <button onClick={() => markAsAnswered(q._id)}>Answer Question</button>
+                                )}
+                            </li>
                         ))}
                     </ul>
                 </div>

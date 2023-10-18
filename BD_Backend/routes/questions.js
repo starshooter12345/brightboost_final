@@ -62,22 +62,21 @@ router.get('/', async (req, res) => {
 // @desc Mark a question as answered
 // @access Public
 router.put('/:id/answer', async (req, res) => {
-  try {
-      const question = await Question.findById(req.params.id);
-      if (!question) {
-          return res.status(404).send('Question not found');
-      }
+    try {
+        const question = await Question.findById(req.params.id);
+        if (!question) {
+            return res.status(404).send('Question not found');
+        }
 
-      question.isAnswered = true;
-      await question.save();
+        question.isAnswered = true;
+        await question.save();
 
-      res.json(question);
-  } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-  }
+        res.json(question);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error: ' + err.message);
+    }
 });
-
 
   
 
