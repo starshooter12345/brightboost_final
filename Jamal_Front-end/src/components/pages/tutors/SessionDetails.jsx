@@ -30,7 +30,8 @@ function SessionDetails() {
 
     const markAsAnswered = async (questionId) => {
         try {
-            const response = await axios.put('http://localhost:5000/api/questions/${questionId}/answer');
+            const response = await axios.put(`http://localhost:5000/api/questions/${questionId}/answer`);
+
             const updatedQuestions = questions.map(q => 
                 q._id === questionId ? response.data : q
             );
