@@ -14,6 +14,10 @@ const QuestionSchema = new mongoose.Schema({
     session: {
         type: String,
         required: true
+    },
+    isAnswered: {
+        type: Boolean,
+        default: false
     }
 });
 
