@@ -7,6 +7,7 @@ function AskQuestion() {
   const [subject, setSubject] = useState('');
   const [question, setQuestion] = useState('');
   const [session, setSession] = useState(''); 
+  const [tutors, setTutors ] = useState('');
 
   const submitQuestion = async (e) => {
     e.preventDefault();
@@ -22,8 +23,34 @@ function AskQuestion() {
     }
   };
 
+  const fetchTutors = async ()=>{
+    try{
+      const response = await axios.get('http://localhost:5000/api/availability/availability', {
+        params: {
+          subject: subject,
+          session: session
+        }
+    });
+    setTutors(response.data);
+  } catch (error) {
+    console.error('Error fetching the tutors:', error);
+    alert('Error fetching the tutors');
+  }
+  }
+
   return (
     <div>
+       <button onClick={fetchTutors}>View tutor availability</button>
+       {tutors.length > 0 && (
+        <div>
+          <h3>Available Tutors:</h3>
+          <ul>
+            {tutors.map(tutor => (
+              <li key={tutor._id}>{tutor.name}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <h2>Ask a Question</h2>
       <form onSubmit={submitQuestion}>
         <label>
@@ -47,14 +74,17 @@ function AskQuestion() {
           Select Session:
           <select value={session} onChange={(e) => setSession(e.target.value)} required>
             <option value="" disabled>Select Session</option>
-            <option value="Monday 3:30-5:30pm">Monday 3:30-5:30pm</option>
-            <option value="Tuesday 3:30-5:30pm">Tuesday 3:30-5:30pm</option>
-            <option value="Wednesday 3:30-5:30pm">Wednesday 3:30-5:30pm</option>
-            <option value="Thursday 3:30-5:30pm">Thursday 3:30-5:30pm</option>
-            <option value="Friday 3:30-5:30pm">Friday 3:30-5:30pm</option>
+            <option value="monday">Monday 3:30-5:30pm</option>
+            <option value="tuesday">Tuesday 3:30-5:30pm</option>
+            <option value="wednesday">Wednesday 3:30-5:30pm</option>
+            <option value="thursday">Thursday 3:30-5:30pm</option>
+            <option value="friday">Friday 3:30-5:30pm</option>
           </select>
         </label>
+        
+        
         <button type="submit">Submit</button>
+        
       </form>
     </div>
   );
