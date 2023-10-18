@@ -6,6 +6,21 @@ function SessionDetails() {
     const [session, setSession] = useState('');
     const [questions, setQuestions] = useState([]);
     const [error, setError] = useState('');
+    const [answeredCount, setAnsweredCount] = useState(0);
+
+    const fetchAnsweredCount = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/questions/answered-count', {
+                params: {
+                    subject: subject,
+                    session: session
+                }
+            });
+            setAnsweredCount(response.data.count);
+        } catch (err) {
+            console.error('Error fetching answered questions count:', err);
+        }
+    };
 
     const fetchQuestions = async () => {
         try {
@@ -81,9 +96,14 @@ function SessionDetails() {
                                 {q.question}
                                 {!q.isAnswered && (
                                     <button onClick={() => markAsAnswered(q._id)}>Answer Question</button>
+                                    
                                 )}
+                                
                             </li>
+                            
                         ))}
+                        <button onClick={fetchAnsweredCount}>View Answered Question Count</button>
+                                <p>Answered Questions Count: {answeredCount}</p>
                     </ul>
                 </div>
             )}

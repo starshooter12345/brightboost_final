@@ -78,9 +78,6 @@ router.put('/:id/answer', async (req, res) => {
     }
 });
 
-// @route GET /api/questions/answered-count
-// @desc Get the count of answered questions for a specific subject and session
-// @access Public
 router.get('/answered-count', async (req, res) => {
     const { subject, session } = req.query;
   
@@ -91,7 +88,7 @@ router.get('/answered-count', async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server error');
     }
-  });
+});
   
 
   
