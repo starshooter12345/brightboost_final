@@ -29,17 +29,35 @@ router.post('/', async (req, res) => {
 // @route GET /api/questions
 // @desc Get questions based on subject
 // @access Public
-router.get('/', async (req, res) => {
-    const { subject } = req.query;
+// router.get('/', async (req, res) => {
+//     const { subject } = req.query;
   
-    try {
-      const questions = await Question.find({ subject });
+//     try {
+//       const questions = await Question.find({ subject });
+//       res.json(questions);
+//     } catch (err) {
+//       console.error(err.message);
+//       res.status(500).send('Server error');
+//     }
+//   });
+
+router.get('/', async (req, res) => {
+  const { subject, session } = req.query;
+
+  try {
+      const questions = await Question.find({ subject, session });
+      
+      if (questions.length === 0) {
+          return res.status(404).send('Question not found');
+      }
+
       res.json(questions);
-    } catch (err) {
+  } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
-    }
-  });
+  }
+});
+
   
 
 module.exports = router;
