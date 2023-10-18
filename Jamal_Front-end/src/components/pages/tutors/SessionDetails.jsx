@@ -43,7 +43,7 @@ function SessionDetails() {
                     <option value="Media">Media</option>
                 </select>
             </label>
-
+          <br/>
             <label>
                 Select Session:
                 <select value={session} onChange={(e) => setSession(e.target.value)} required>
@@ -55,7 +55,7 @@ function SessionDetails() {
                     <option value="friday">Friday</option>
                 </select>
             </label>
-
+            <br/>
             <button onClick={fetchQuestions}>Fetch Question</button>
 
             {questions.length > 0 && (
