@@ -6,6 +6,7 @@ function SessionDetails() {
     const [session, setSession] = useState('');
     const [questions, setQuestions] = useState([]);
     const [error, setError] = useState('');
+    const [answeredCount, setAnsweredCount] = useState(0);
 
     const fetchQuestions = async () => {
         try {
@@ -15,6 +16,15 @@ function SessionDetails() {
                     session: session
                 }
             });
+
+            const answeredCountResponse = await axios.get('http://localhost:5000/api/questions/answered-count', {
+                params: {
+                    subject: subject,
+                    session: session
+                }
+            });
+
+            setAnsweredCount(answeredCountResponse.data.count);
 
             if (response.data.length > 0) {
                 setQuestions(response.data);
@@ -30,7 +40,16 @@ function SessionDetails() {
 
     const markAsAnswered = async (questionId) => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/questions/${questionId}/answer`);
+            const response = await axios.put('http://localhost:5000/api/questions/${questionId}/answer');
+            
+            const answeredCountResponse = await axios.get('http://localhost:5000/api/questions/answered-count', {
+                params: {
+                    subject: subject,
+                    session: session
+                }
+            });
+            
+            setAnsweredCount(answeredCountResponse.data.count);
 
             const updatedQuestions = questions.map(q => 
                 q._id === questionId ? response.data : q
@@ -89,6 +108,8 @@ function SessionDetails() {
             )}
 
             {error && <p>{error}</p>}
+            <br/>
+            <textarea readOnly value={'Answered Questions Count: ${answeredCount}'} />
         </div>
     );
 }
