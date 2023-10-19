@@ -7,6 +7,20 @@ function SessionDetails() {
     const [questions, setQuestions] = useState([]);
     const [error, setError] = useState('');
     const [answeredCount, setAnsweredCount] = useState(0);
+    const [sessionCount, setSessionCount] = useState(0);
+
+    const fetchSessionCount = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/questions/session-count', {
+                params: {
+                    session: session
+                }
+            });
+            setSessionCount(response.data.count);
+        } catch (err) {
+            console.error('Error fetching session student count:', err);
+        }
+    };
 
     const fetchAnsweredCount = async () => {
         try {
@@ -104,7 +118,12 @@ function SessionDetails() {
                         ))}
                         <button onClick={fetchAnsweredCount}>View Answered Question Count</button>
                                 <p>Answered Questions Count: {answeredCount}</p>
+
+                               
                     </ul>
+                    <button onClick={fetchSessionCount}>View Student count for session</button> {/* New Button */}
+            
+            <p>Student count for this session: {sessionCount}</p> 
                 </div>
             )}
 
