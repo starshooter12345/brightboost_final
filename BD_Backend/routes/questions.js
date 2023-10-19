@@ -90,7 +90,21 @@ router.get('/answered-count', async (req, res) => {
     }
 });
   
+// ...
 
-  
+// @route GET /api/questions/session-count
+// @desc Get the count of questions for a specific session
+// @access Public
+router.get('/session-count', async (req, res) => {
+    const { session } = req.query;
+
+    try {
+        const count = await Question.countDocuments({ session });
+        res.json({ count });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
 
 module.exports = router;
