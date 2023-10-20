@@ -50,7 +50,8 @@ const AdminDashboard = () => {
         <div>
           <button onClick={fetchTutorCount}>Show number of tutors for the session</button>
           <button onClick={fetchQuestionCount}>Show number of questions for the session</button>
-          <button onClick={() => setStudentCount(studentCount)}>Show the number of students attending the session</button>
+          <button onClick={() => setStudentCount(questionCount)}>Show the number of students attending the session</button>
+
 
           <div>
             <p>Tutors for this session: {tutorCount}</p>
