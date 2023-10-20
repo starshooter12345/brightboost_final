@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/student-registration" component={StudentRegistration} />
           <Route path="/tutor-registration" component={TutorRegistration} />
-          <Route path="/admin-dashboard" component={AdminDashboard}/>
+          <Route path="/AdminDashboard/admin-dashboard" component={AdminDashboard}/>
           {/* Routes for student pages */}
           <Route path="/students" component={StudentLayout} />
           <Route path="/tutors/session-details" component={SessionDetails} />
