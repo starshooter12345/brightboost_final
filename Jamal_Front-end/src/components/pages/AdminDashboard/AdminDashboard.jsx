@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // AdminDashboard.jsx
 // import React, { useState } from 'react';
 // import axios from 'axios';
@@ -67,6 +68,8 @@
 // export default AdminDashboard;
 
 // AdminDashboard.jsx
+=======
+>>>>>>> df840de315187c6ea36a561985e354f2f73af943
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -123,8 +126,13 @@ const AdminDashboard = () => {
           <table border="1" style={{ marginTop: '20px', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
+<<<<<<< HEAD
                 <th>Description</th>
                 <th>Statistics</th>
+=======
+                <th>Attribute</th>
+                <th>Count</th>
+>>>>>>> df840de315187c6ea36a561985e354f2f73af943
               </tr>
             </thead>
             <tbody>
