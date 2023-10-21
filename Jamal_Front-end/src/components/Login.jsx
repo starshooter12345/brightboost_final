@@ -56,7 +56,7 @@ function Login() {
         </div>
         <div>
           <label>
-            Username:
+            Email:
             <input 
               type="text" 
               value={username} 
