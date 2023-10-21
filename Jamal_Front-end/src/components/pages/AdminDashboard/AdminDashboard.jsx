@@ -1,4 +1,3 @@
-// AdminDashboard.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -52,12 +51,28 @@ const AdminDashboard = () => {
           <button onClick={fetchQuestionCount}>Show number of questions for the session</button>
           <button onClick={() => setStudentCount(questionCount)}>Show the number of students attending the session</button>
 
-
-          <div>
-            <p>Tutors for this session: {tutorCount}</p>
-            <p>Questions for this session: {questionCount}</p>
-            <p>Students attending this session: {studentCount}</p> {/* As per the specification, it's the same as questionCount */}
-          </div>
+          <table border="1" style={{ marginTop: '20px', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tutors for this session</td>
+                <td>{tutorCount}</td>
+              </tr>
+              <tr>
+                <td>Questions for this session</td>
+                <td>{questionCount}</td>
+              </tr>
+              <tr>
+                <td>Students attending this session</td>
+                <td>{studentCount}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
     </div>
