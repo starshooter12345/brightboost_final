@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import backgroundImage from '../../../assets/images/secondphoto.jpg';
 
 function AskQuestion() {
   const [subject, setSubject] = useState('');
@@ -38,8 +39,15 @@ function AskQuestion() {
   }
   }
 
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
+
   return (
-    <div>
+    <div style={containerStyle}>
        <button onClick={fetchTutors}>View tutor availability</button>
        {tutors.length > 0 && (
         <div>

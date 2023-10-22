@@ -1,4 +1,5 @@
 /* Resetting styles for the navigation list */
+
 .tutorLayout ul {
     list-style-type: none; /* Removes bullet points */
     padding: 0; /* Removes default padding */
