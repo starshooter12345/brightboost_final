@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import backgroundImage from '../../../assets/images/secondphoto.jpg';
 const AdminDashboard = () => {
   const [session, setSession] = useState('');
   const [questionCount, setQuestionCount] = useState(0);
@@ -30,8 +30,15 @@ const AdminDashboard = () => {
     }
   };
 
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
+  
   return (
-    <div>
+    <div style={containerStyle}>
       <h2>Admin Dashboard</h2>
 
       <label>

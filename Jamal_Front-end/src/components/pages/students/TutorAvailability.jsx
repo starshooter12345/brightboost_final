@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import backgroundImage from '../../assets/images/secondphoto.jpg';
 
 function TutorAvailability() {
   const [tutors, setTutors] = useState([]);
@@ -15,8 +16,15 @@ function TutorAvailability() {
     fetchTutors();
   }, []);
 
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
+
   return (
-    <div>
+    <div style={containerStyle}>
       <label>
         Search by Expertise:
         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />

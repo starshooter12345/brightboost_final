@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import backgroundImage from '../../../assets/images/secondphoto.jpg';
 
 function ViewQuestions() {
   const [expertise, setExpertise] = useState('');
@@ -25,8 +26,17 @@ function ViewQuestions() {
     fetchQuestions();
   }, [expertise]); // Re-fetch questions when expertise changes
 
+
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
+
+  
   return (
-    <div>
+    <div style={containerStyle}>
       <h2>View Questions</h2>
       <label>
         Your Expertise:

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import backgroundImage from '../../../assets/images/secondphoto.jpg';
 
 function SessionDetails() {
     const [subject, setSubject] = useState('');
@@ -71,8 +72,15 @@ function SessionDetails() {
         }
     };
 
+    const containerStyle = {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',  // This will ensure the image covers the entire container
+        backgroundRepeat: 'no-repeat',
+        height: '100vh'  // This will make sure it covers the full viewport height
+      };
+
     return (
-        <div>
+        <div style={containerStyle}>
             <h2>Session Details</h2>
 
             <label>

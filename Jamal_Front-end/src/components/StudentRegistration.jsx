@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import backgroundImage from '../assets/images/secondphoto.jpg';
 
 function StudentRegistration() {
   const [formData, setFormData] = useState({
@@ -43,8 +44,15 @@ function StudentRegistration() {
     history.push('/login');
   };
 
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
+
   return (
-    <div>
+    <div style={containerStyle}>
       <h2>Student Registration</h2>
       <form onSubmit={handleSubmit}>
         <label>
