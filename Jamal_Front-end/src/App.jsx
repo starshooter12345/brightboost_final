@@ -11,6 +11,7 @@ import SessionDetails from './components/pages/tutors/SessionDetails';
 import TutorSideNav from './components/pages/tutors/TutorSideNav';
 import ViewQuestions from './components/pages/tutors/ViewQuestions';
 import AskQuestion from './components/pages/students/AskQuestion';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <div className="main-content">
         <Switch>
+        <Route path="/home-page" component={HomePage} />
           <Route path="/login" component={Login} />
           <Route path="/student-registration" component={StudentRegistration} />
           <Route path="/tutor-registration" component={TutorRegistration} />

@@ -1,4 +1,4 @@
-// Jamal_Front-end/src/components/pages/students/AskQuestion.jsx
+//Jamal_Front-end/src/components/pages/students/AskQuestion.jsx
 
 import React, { useState } from 'react';
 import axios from 'axios';
