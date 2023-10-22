@@ -2,10 +2,18 @@
 
 import React from 'react';
 import './HomePage.css';
+import backgroundImage from '../assets/images/secondphoto.jpg';
+
+const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundRepeat: 'no-repeat',
+    height: '100vh'  // This will make sure it covers the full viewport height
+  };
 
 const HomePage = () => {
     return (
-        <div className="homepage-container">
+        <div className="homepage-container" style={containerStyle}>
             <header className="header">
                 <h1>Welcome to Bright Boost</h1>
                 <p>After-school tutoring for high school students</p>

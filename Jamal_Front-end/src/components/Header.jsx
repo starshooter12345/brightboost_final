@@ -5,7 +5,7 @@ import './Header.css';
 function Header() {
   return (
     <header>
-      <div className="app-name">Bright Boost</div>
+      <div className="app-name"><NavLink to='/home-page'>Bright Boost</NavLink></div>
       <nav>
         <NavLink to="/login">Login</NavLink>
         {/* Additional Navigation Links */}
