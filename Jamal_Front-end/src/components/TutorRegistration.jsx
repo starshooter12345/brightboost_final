@@ -68,9 +68,9 @@ function TutorRegistration() {
 
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundSize: 'cover', 
     backgroundRepeat: 'no-repeat',
-    height: '100vh'  // This will make sure it covers the full viewport height
+    height: '100vh'  
   };
 
   return (

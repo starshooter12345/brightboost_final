@@ -1,4 +1,4 @@
-// HomePage.jsx
+
 
 import React from 'react';
 import './HomePage.css';
@@ -6,9 +6,9 @@ import backgroundImage from '../assets/images/secondphoto.jpg';
 
 const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundSize: 'cover',  
     backgroundRepeat: 'no-repeat',
-    height: '100vh'  // This will make sure it covers the full viewport height
+    height: '100vh'  
   };
 
 const HomePage = () => {

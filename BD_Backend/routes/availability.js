@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Tutor = require('../models/Tutor'); // Adjust the path based on where your Tutor model is located
+const Tutor = require('../models/Tutor'); 
 
-// @route GET /api/tutors/availability
-// @desc Get tutors based on subject and availability
-// @access Public
+
 router.get('/availability', async (req, res) => {
     const { subject, session } = req.query;
     

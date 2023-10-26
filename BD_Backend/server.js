@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');  // Add this line
+const cors = require('cors');  
 require('dotenv').config();
 
 
@@ -9,11 +9,11 @@ const tutorRoutes = require('./routes/tutors2');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(express.json());  // Add this line to parse JSON requests
-app.use(cors());  // Add this line to handle CORS
 
-// Connect to MongoDB
+app.use(express.json());  
+app.use(cors());  
+
+
 mongoose.connect(process.env.MONGO_URI, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch((err) => console.log(err));
 
 
-// Define Routes
-app.use('/api/auth', require('./routes/auth'));  // Add this line
+
+app.use('/api/auth', require('./routes/auth'));  
 
 app.use('/api/questions', require('./routes/questions'));
 app.use('/api/availability', require('./routes/availability'));

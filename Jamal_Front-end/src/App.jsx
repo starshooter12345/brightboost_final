@@ -30,8 +30,7 @@ function App() {
           <Route path="/tutors/sidenav" component={TutorSideNav} />
           <Route path="/tutors/view-questions" component={ViewQuestions} />
           <Route path="/students/ask-question" component={AskQuestion} />
-          {/* Uncomment below if you have tutor related components ready */}
-          {/* <Route path="/tutors" component={TutorLayout} /> */}
+         
         </Switch>
       </div>
       <Footer />

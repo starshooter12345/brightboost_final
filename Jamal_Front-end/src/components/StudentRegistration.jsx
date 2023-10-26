@@ -27,28 +27,28 @@ function StudentRegistration() {
           'Content-Type': 'application/json'
         }
       };
-      // Send a POST request to the backend
+      
       const res = await axios.post('http://localhost:5000/api/auth/register', studentData, config);
-      console.log('Registration Response:', res.data);  // Log API response
+      console.log('Registration Response:', res.data);  
     } catch (err) {
-      console.error('Registration Error:', err.response.data);  // Log any errors
+      console.error('Registration Error:', err.response.data);  
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Student Registered:', formData);
-    // Call the registerStudent function and wait for it to complete
+   
     await registerStudent({...formData, isTutor: false});
-    // After registration, redirect the user to the login page
+  
     history.push('/login');
   };
 
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',  // This will ensure the image covers the entire container
+    backgroundSize: 'cover',  
     backgroundRepeat: 'no-repeat',
-    height: '100vh'  // This will make sure it covers the full viewport height
+    height: '100vh' 
   };
 
   return (
