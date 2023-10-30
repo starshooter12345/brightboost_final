@@ -1,4 +1,4 @@
-// BD_Backend/models/Question.js
+//BD_Backend/models/Question.js
 
 const mongoose = require('mongoose');
 
